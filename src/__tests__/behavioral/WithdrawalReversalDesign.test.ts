@@ -6,7 +6,7 @@ import AbstractSpruceTest, {
 import { DesignPhases } from '../../types'
 import WithdrawalReversalDesignImpl, {
     WithdrawalReversalDesign,
-} from './WithdrawalReversalDesign'
+} from '../../WithdrawalReversalDesign'
 
 export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
     private static instance: WithdrawalReversalDesign

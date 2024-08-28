@@ -1,5 +1,5 @@
 import { assertOptions } from '@sprucelabs/schema'
-import { DesignPhases } from '../../types'
+import { DesignPhases } from './types'
 
 export default class WithdrawalReversalDesignImpl
     implements WithdrawalReversalDesign
