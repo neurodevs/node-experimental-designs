@@ -13,7 +13,7 @@ export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
 
     protected static async beforeEach() {
         await super.beforeEach()
-        this.instance = this.DefaultDesign()
+        this.instance = this.Design(this.phases)
     }
 
     @test()
@@ -25,18 +25,18 @@ export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
     protected static async throwsWithMissingRequiredOptions() {
         const err = assert.doesThrow(() => {
             // @ts-ignore
-            this.WithdrawalReversalDesign()
+            this.Design()
         })
         errorAssert.assertError(err, 'MISSING_PARAMETERS', {
             parameters: ['phases'],
         })
     }
 
-    private static DefaultDesign() {
-        return WithdrawalReversalDesignImpl.Create([])
+    private static get phases() {
+        return [] as Phases
     }
 
-    private static WithdrawalReversalDesign(phases: Phases) {
+    private static Design(phases: Phases) {
         return WithdrawalReversalDesignImpl.Create(phases)
     }
 }
