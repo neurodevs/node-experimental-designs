@@ -1,4 +1,5 @@
 import { assertOptions } from '@sprucelabs/schema'
+import { DesignPhases as DesignPhases } from '../../types'
 
 export default class WithdrawalReversalDesignImpl
     implements WithdrawalReversalDesign
@@ -7,7 +8,7 @@ export default class WithdrawalReversalDesignImpl
 
     protected constructor() {}
 
-    public static Create(phases: PhaseMatrix) {
+    public static Create(phases: DesignPhases) {
         assertOptions({ phases }, ['phases'])
         return new (this.Class ?? this)()
     }
@@ -17,7 +18,3 @@ export interface WithdrawalReversalDesign {}
 
 export type WithdrawalReversalDesignConstructor =
     new () => WithdrawalReversalDesign
-
-export type PhaseMatrix = PhaseBiometrics[]
-
-export interface PhaseBiometrics {}
