@@ -48,7 +48,7 @@
 	"debug.javascript.unmapMissingSources": true,
 	"javascript.preferences.importModuleSpecifier": "relative",
 	"typescript.preferences.importModuleSpecifier": "relative",
-	"eslint.experimental.useFlatConfig": true,
+	"eslint.useFlatConfig": true,
 	"eslint.enable": true,
 	"eslint.validate": [
 		"javascript",
@@ -63,5 +63,29 @@
 	"editor.formatOnSave": false,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always"
-	}
+	},
+	"multiCommand.commands": [
+		{
+			"command": "extension.createTestPattern",
+			"sequence": [
+				{
+					"command": "editor.action.insertSnippet",
+					"args": {
+						"snippet": "import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils';\nimport ${1:YourClass}Impl, { ${1:YourClass} } from './${1:YourClass}';\n\nexport default class ${1:YourClass}Test extends AbstractSpruceTest {\n\tprivate static instance: ${1:YourClass};\n\t\n\tprotected static async beforeEach() {\n\t\tawait super.beforeEach();\n\t\tthis.instance = this.${1:YourClass}();\n\t}\n\t\n\t@test()\n\tprotected static async canCreate${1:YourClass}() {\n\t\tassert.isTruthy(this.instance);\n\t}\n\t\n\tprivate static ${1:YourClass}() {\n\t\treturn ${1:YourClass}Impl.Create();\n\t}\n}"
+					}
+				},
+			]
+		},
+		{
+			"command": "extension.createImplPattern",
+			"sequence": [
+				{
+					"command": "editor.action.insertSnippet",
+					"args": {
+						"snippet": "export default class ${1:YourClass}Impl implements ${1:YourClass} {\n\tpublic static Class?: ${1:YourClass}Constructor;\n\t\n\tprotected constructor() {}\n\t\n\tpublic static Create() {\n\t\treturn new (this.Class ?? this)();\n\t}\n}\n\nexport interface ${1:YourClass} {}\n\nexport type ${1:YourClass}Constructor = new () => ${1:YourClass};"
+					}
+				},
+			]
+		}
+	]
 }
