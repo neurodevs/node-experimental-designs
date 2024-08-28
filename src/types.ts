@@ -1,4 +1,4 @@
-export type DesignPhases = Phase[]
+export type Phases = Phase[]
 
 export interface Phase {
     name: string

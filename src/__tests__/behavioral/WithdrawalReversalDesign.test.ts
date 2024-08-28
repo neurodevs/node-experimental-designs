@@ -3,7 +3,7 @@ import AbstractSpruceTest, {
     assert,
     errorAssert,
 } from '@sprucelabs/test-utils'
-import { DesignPhases } from '../../types'
+import { Phases } from '../../types'
 import WithdrawalReversalDesignImpl, {
     WithdrawalReversalDesign,
 } from '../../WithdrawalReversalDesign'
@@ -36,7 +36,7 @@ export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
         return WithdrawalReversalDesignImpl.Create([])
     }
 
-    private static WithdrawalReversalDesign(phases: DesignPhases) {
+    private static WithdrawalReversalDesign(phases: Phases) {
         return WithdrawalReversalDesignImpl.Create(phases)
     }
 }
